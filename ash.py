@@ -1,6 +1,6 @@
 #PRIMARY IMPORTS
 
-import PySide2, PyQt5, sys, os, platform
+import PyQt5, sys, os, platform
 
 #SECONDARY IMPORTS
 
