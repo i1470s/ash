@@ -4,39 +4,40 @@ import PySide2, PyQt5, sys, os, platform
 
 #SECONDARY IMPORTS
 
-from PySide2 import QtCore, QtGui, QtWidgets
-from PySide2.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTime, QMetaObject, QObject, QPoint, QRect, QSize, QTime, QUrl, Qt, QEvent)
-from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter, QPixmap, QRadialGradient, QIcon)
-from PySide2.QtWidgets import *
-from PyQt5 import *
+from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
 
 #UI IMPORTS
 
 from data.ui_splash_screen import Ui_SplashScreen
+from data.ui_main_screen import Ui_mainWindow
 
 #SETTINGS
 
 counter = 0
 
 #MAIN WINDOW
-class MainWindow(QMainWindow):
+class mainWindow(QMainWindow):
     def __init__(self, *args, **kwargs):
-        super(MainWindow, self).__init__(*args, **kwargs)
-        self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
-        self.setStyleSheet("""color: rgba(255,255,255,100%); background-color: rgba(34,34,34,100%); border-radius: 150px;""")
-        self.setFixedSize(750, 600)
+        super(mainWindow, self).__init__(*args, **kwargs)
+        self.ui = Ui_mainWindow()
+        self.ui.setupUi(self)
+        self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
+        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         self.setWindowIcon(QtGui.QIcon("./data/imgs/icon.png"))
-        self.setWindowTitle("Ash - Edit")
+        self.oldPos = self.pos()
         
-        self.editor = QPlainTextEdit() 
-        self.setCentralWidget(self.editor)
-        fixedfont = QFontDatabase.systemFont(QFontDatabase.FixedFont)
-        fixedfont.setPointSize(12)
-        self.editor.setFont('ArialFont')
-
-        self.path = None
 
 
+    def mousePressEvent(self, event):
+        self.oldPos = event.globalPos()
+
+    def mouseMoveEvent(self, event):
+        delta = QPoint (event.globalPos() - self.oldPos)
+        self.move(self.x() + delta.x(), self.y() + delta.y())
+        self.oldPos = event.globalPos()
 
 # SPLASH SCREEN
 class SplashScreen(QMainWindow):
@@ -65,6 +66,7 @@ class SplashScreen(QMainWindow):
         QtCore.QTimer.singleShot(1500, lambda: self.ui.label_description.setText("<strong>Loading Database</strong>"))
         QtCore.QTimer.singleShot(3000, lambda: self.ui.label_description.setText("<strong>Loading User Interface</strong>"))
 		
+        self.oldPos = self.pos()
         self.show()
 
     #COUNTER
@@ -73,10 +75,18 @@ class SplashScreen(QMainWindow):
         self.ui.progressBar.setValue(counter)
         if counter > 100:
             self.timer.stop()
-            self.main = MainWindow()
+            self.main = mainWindow()
             self.main.show()
             self.close()
         counter += 1    
+
+    def mousePressEvent(self, event):
+        self.oldPos = event.globalPos()
+
+    def mouseMoveEvent(self, event):
+        delta = QPoint (event.globalPos() - self.oldPos)
+        self.move(self.x() + delta.x(), self.y() + delta.y())
+        self.oldPos = event.globalPos()
 
 #LAUNCH APPLICATION
 def launch():
