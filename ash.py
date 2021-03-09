@@ -61,9 +61,9 @@ class terminalWindow(QWidget):
         
         
 #CHAT WINDOW
-
-#COMINGSOON
- 
+class chatWindow(QWidget):
+    def __init__(self):
+        super(chatWindow, self).__init__(*args, **kwargs)
  
  
  
