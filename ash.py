@@ -20,6 +20,8 @@ from data.ui.ui_terminal_screen import ui_terminalWindow
 
 counter = 0
 
+
+
 #MAIN WINDOW
 class mainWindow(QMainWindow):
     def __init__(self, *args, **kwargs):
@@ -112,6 +114,8 @@ class SplashScreen(QMainWindow):
         delta = QPoint (event.globalPos() - self.oldPos)
         self.move(self.x() + delta.x(), self.y() + delta.y())
         self.oldPos = event.globalPos()
+
+
 
 #LAUNCH APPLICATION
 def launch():
