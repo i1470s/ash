@@ -13,6 +13,7 @@ from PyQt5.QtCore import *
 
 from data.ui.ui_splash_screen import Ui_SplashScreen
 from data.ui.ui_main_screen import Ui_mainWindow
+from data.ui.ui_chat_screen import ui_chatWindow
 
 #SETTINGS
 
@@ -36,9 +37,17 @@ class mainWindow(QMainWindow):
         delta = QPoint (event.globalPos() - self.oldPos)
         self.move(self.x() + delta.x(), self.y() + delta.y())
         self.oldPos = event.globalPos()
+        
+        
+        
+        
+#CHAT WINDOW
 
-
-
+#COMINGSOON
+ 
+ 
+ 
+ 
 # SPLASH SCREEN
 class SplashScreen(QMainWindow):
     is_save = False
