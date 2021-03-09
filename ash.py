@@ -28,8 +28,6 @@ class mainWindow(QMainWindow):
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         self.setWindowIcon(QtGui.QIcon("./data/imgs/icon.png"))
         self.oldPos = self.pos()
-        
-
 
     def mousePressEvent(self, event):
         self.oldPos = event.globalPos()
@@ -38,6 +36,8 @@ class mainWindow(QMainWindow):
         delta = QPoint (event.globalPos() - self.oldPos)
         self.move(self.x() + delta.x(), self.y() + delta.y())
         self.oldPos = event.globalPos()
+
+
 
 # SPLASH SCREEN
 class SplashScreen(QMainWindow):
@@ -69,7 +69,6 @@ class SplashScreen(QMainWindow):
         self.oldPos = self.pos()
         self.show()
 
-    #COUNTER
     def progress(self):
         global counter
         self.ui.progressBar.setValue(counter)
