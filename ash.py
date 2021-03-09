@@ -13,8 +13,8 @@ from PyQt5.QtCore import *
 
 from data.ui.ui_splash_screen import Ui_SplashScreen
 from data.ui.ui_main_screen import Ui_mainWindow
-from data.ui.ui_chat_screen import ui_chatWindow
-from data.ui.ui_terminal_screen import ui_terminalWindow
+from data.ui.ui_chat_screen import Ui_chatWindow
+from data.ui.ui_terminal_screen import Ui_terminalWindow
 
 #SETTINGS
 
