@@ -11,8 +11,8 @@ from PyQt5.QtCore import *
 
 #UI IMPORTS
 
-from data.ui_splash_screen import Ui_SplashScreen
-from data.ui_main_screen import Ui_mainWindow
+from data.ui.ui_splash_screen import Ui_SplashScreen
+from data.ui.ui_main_screen import Ui_mainWindow
 
 #SETTINGS
 
