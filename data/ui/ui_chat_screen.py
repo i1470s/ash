@@ -7,3 +7,4 @@ from PyQt5.QtWidgets import *
 
 class Ui_chatWindow(object):
     def setupUi(self, chatWindow):
+        return
