@@ -1,4 +1,4 @@
-# ash
+# Ash
 The Simple IDE 
 
 Currently in development check back in a week!
